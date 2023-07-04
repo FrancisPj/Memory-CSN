@@ -98,6 +98,9 @@ h1 span {
 }
 
 /* formulaire */
+.inscription {
+  padding-top: 20px;
+}
 form {
   max-width: 400px;
   margin: 0 auto;
