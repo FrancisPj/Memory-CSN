@@ -84,3 +84,96 @@ function handleRestart(e) {
     }, 600)
   }
 }
+
+window.addEventListener("DOMContentLoaded", function() {
+  // Ajoutez une variable pour stocker les données des joueurs
+  let tableauScores = [];
+
+  // Récupérez la référence vers le formulaire d'inscription
+  let inscriptionForm = document.getElementById("inscription-form");
+
+  // Ajoutez un écouteur d'événement pour la soumission du formulaire
+  inscriptionForm.addEventListener("submit", function(event) {
+    event.preventDefault(); // Empêche le formulaire de se soumettre
+
+    // Récupérez les valeurs des champs nom et email
+    let nom = document.getElementById("nom").value;
+    let email = document.getElementById("email").value;
+
+    // Récupérez le nombre de coups actuel
+    let nombreCoups = parseInt(document.querySelector(".score").textContent.match(/\d+/)[0]);
+
+    // Créez un objet pour stocker les données du joueur
+    let joueur = {
+      nom: nom,
+      email: email,
+      nombreCoups: nombreCoups,
+      date: new Date().toLocaleDateString()
+    };
+
+    // Ajoutez le joueur à votre tableau de scores
+    tableauScores.push(joueur);
+
+    // Appelez la fonction pour générer les lignes du tableau à chaque ajout de joueur
+    genererLignesTableau();
+
+    // Effectuez ici les actions supplémentaires, par exemple, enregistrez les données dans une base de données
+
+    // Affichez les données récupérées dans la console (vous pouvez les enregistrer ou les traiter autrement)
+    console.log("Nom:", nom);
+    console.log("Email:", email);
+    console.log("Nombre de coups:", nombreCoups);
+    console.log("Date:", joueur.date);
+
+    // Affichez une alerte de succès ou effectuez d'autres actions souhaitées
+    alert("Inscription réussie !");
+    document.getElementById("inscription-form").reset(); // Réinitialise le formulaire
+  });
+
+  // Récupérez la référence vers le corps du tableau
+  let tableauScoresBody = document.getElementById("tableau-scores-body");
+
+  // Fonction pour générer les lignes du tableau
+  function genererLignesTableau() {
+    // Vide le corps du tableau
+    tableauScoresBody.innerHTML = "";
+
+    // Parcourez le tableau des scores et créez une ligne pour chaque joueur
+    tableauScores.forEach(function(joueur) {
+      let ligne = document.createElement("tr");
+
+      // Colonne Nom
+      let colonneNom = document.createElement("td");
+      colonneNom.textContent = joueur.nom;
+      ligne.appendChild(colonneNom);
+
+      // Colonne Email
+      let colonneEmail = document.createElement("td");
+      colonneEmail.textContent = joueur.email;
+      ligne.appendChild(colonneEmail);
+
+      // Colonne Nombre de coups
+      let colonneNombreCoups = document.createElement("td");
+      colonneNombreCoups.textContent = joueur.nombreCoups;
+      ligne.appendChild(colonneNombreCoups);
+
+      // Colonne Date
+      let colonneDate = document.createElement("td");
+      colonneDate.textContent = joueur.date;
+      ligne.appendChild(colonneDate);
+
+      // Ajoutez la ligne au corps du tableau
+      tableauScoresBody.appendChild(ligne);
+    });
+  }
+
+  // Réinitialise le tableau des scores et le corps du tableau
+  function reinitialiserTableau() {
+    tableauScores = [];
+    genererLignesTableau();
+  }
+
+  // Ajoutez un écouteur d'événement au bouton de réinitialisation
+  let resetButton = document.getElementById("reset-button");
+  resetButton.addEventListener("click", reinitialiserTableau);
+});

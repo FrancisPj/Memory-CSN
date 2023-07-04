@@ -96,3 +96,61 @@ h1 span {
   transform: rotateY(180deg);
   
 }
+
+/* formulaire */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  display: block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #343534;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #696c69;
+  border: 1px solid black;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  background-color: #f2f2f2;
+  padding: 8px;
+  text-align: left;
+}
+
+tbody td {
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+#tableau-scores-body tr {
+  border-bottom: 1px solid #ccc;
+}
+
+#tableau-scores-body td {
+  padding: 8px;
+}
