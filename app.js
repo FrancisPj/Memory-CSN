@@ -247,7 +247,14 @@ function displayScores() {
 
   const scores = getScoresFromLocalStorage();
 
-  scores.forEach(score => {
+  // trier les scores dans l'ordre croissant
+  scores.sort((a, b) => a.numberOfTries - b.numberOfTries);
+
+  // limiter les scores affichés aux quinze premiers
+  const limitedScores = scores.slice(0, 15);
+
+
+  limitedScores.forEach(score => {
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
       <td>${score.username}</td>
