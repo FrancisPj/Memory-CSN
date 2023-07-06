@@ -1,40 +1,162 @@
-const cards = document.querySelectorAll(".card")
+// const cards = document.querySelectorAll(".card");
 
-function shuffleCards(){
+// function shuffleCards() {
+//   cards.forEach(card => {
+//     const randomPos = Math.trunc(Math.random() * 12);
+//     card.style.order = randomPos;
+//   });
+// }
+// shuffleCards();
+
+// cards.forEach(card => card.addEventListener("click", flipACard));
+
+// let lockedCards = false;
+// let cardsPicked = [];
+// function flipACard(e) {
+//   if (lockedCards) return;
+
+//   saveCard(e.target.children[0], e.target.getAttribute("data-attr"));
+
+//   if (cardsPicked.length === 2) result();
+// }
+
+// function saveCard(el, value) {
+//   if (el === cardsPicked[0]?.el) return;
+
+//   el.classList.add("active");
+//   cardsPicked.push({ el, value });
+//   console.log(cardsPicked);
+// }
+
+// function result() {
+//   saveNumberOftries();
+
+//   if (cardsPicked[0].value === cardsPicked[1].value) {
+//     cardsPicked[0].el.parentElement.removeEventListener("click", flipACard);
+//     cardsPicked[1].el.parentElement.removeEventListener("click", flipACard);
+//     cardsPicked = [];
+//     return;
+//   }
+
+//   lockedCards = true;
+//   setTimeout(() => {
+//     cardsPicked[0].el.classList.remove("active");
+//     cardsPicked[1].el.classList.remove("active");
+//     cardsPicked = [];
+//     lockedCards = false;
+//   }, 1000);
+// }
+
+// const innerCards = [...document.querySelectorAll(".double-face")];
+// const advice = document.querySelector(".advice");
+// const score = document.querySelector(".score");
+
+// let numberOfTries = 0;
+// function saveNumberOftries() {
+//   numberOfTries++;
+//   const checkForEnd = innerCards.filter(card => !card.classList.contains("active"));
+//   if (!checkForEnd.length) {
+//     advice.textContent = `Bravo ! Appuyez sur "espace" pour relancer une partie.`;
+//     score.textContent = `Votre score final : ${numberOfTries}`;
+
+//     // Afficher la div d'inscription
+//     const inscriptionContainer = document.getElementById("inscription-container");
+//     inscriptionContainer.style.display = "block";
+
+//     return;
+//   }
+//   score.textContent = `Nombre de coups ${numberOfTries}`;
+// }
+
+// const inscriptionForm = document.getElementById("inscription-form");
+// inscriptionForm.addEventListener("submit", handleInscription);
+
+// function handleInscription(e) {
+//   e.preventDefault();
+
+//   // Récupérer les valeurs du formulaire
+//   const username = document.getElementById("username").value;
+//   const email = document.getElementById("email").value;
+
+//   // Ajouter les informations au tableau
+//   const tableauScoresBody = document.getElementById("tableau-scores-body");
+//   const newRow = document.createElement("tr");
+//   newRow.innerHTML = `
+//     <td>${username}</td>
+//     <td>${email}</td>
+//     <td>${numberOfTries}</td>
+//     <td>${new Date().toLocaleDateString()}</td>
+//   `;
+//   tableauScoresBody.appendChild(newRow);
+
+//   // Réinitialiser le formulaire
+//   inscriptionForm.reset();
+
+//   // Masquer la div d'inscription
+//   const inscriptionContainer = document.getElementById("inscription-container");
+//   inscriptionContainer.style.display = "none";
+// }
+
+// function displayScores() {
+//   const tableauScoresBody = document.getElementById("tableau-scores-body");
+//   tableauScoresBody.innerHTML = "";
+
+//   let scores = localStorage.getItem("scores");
+//   if (scores) {
+//     scores = JSON.parse(scores);
+
+//     scores.forEach(score => {
+//       const newRow = document.createElement("tr");
+//       newRow.innerHTML = `
+//         <td>${score.username}</td>
+//         <td>${score.email}</</td>
+//         <td>${score.numberOfTries}</td>
+//         <td>${score.date}</td>
+//       `;
+//       tableauScoresBody.appendChild(newRow);
+//     });
+//   }
+// }
+
+// // Appelez la fonction displayScores pour afficher les scores lors du chargement de la page
+// displayScores();
+
+const cards = document.querySelectorAll(".card");
+
+function shuffleCards() {
   cards.forEach(card => {
-    const randomPos = Math.trunc(Math.random() * 12)
+    const randomPos = Math.trunc(Math.random() * 12);
     card.style.order = randomPos;
-  })
+  });
 }
-shuffleCards()
+shuffleCards();
 
-cards.forEach(card => card.addEventListener("click", flipACard))
+cards.forEach(card => card.addEventListener("click", flipACard));
 
 let lockedCards = false;
-let cardsPicked = []
-function flipACard(e){
+let cardsPicked = [];
+function flipACard(e) {
+  if (lockedCards) return;
 
-  if(lockedCards) return;
- 
-  saveCard(e.target.children[0], e.target.getAttribute("data-attr"))
+  saveCard(e.target.children[0], e.target.getAttribute("data-attr"));
 
-  if(cardsPicked.length === 2) result()
+  if (cardsPicked.length === 2) result();
 }
 
 function saveCard(el, value) {
-  if(el === cardsPicked[0]?.el) return;
+  if (el === cardsPicked[0]?.el) return;
 
   el.classList.add("active");
-  cardsPicked.push({el,value})
+  cardsPicked.push({ el, value });
   console.log(cardsPicked);
 }
 
-function result(){
-  saveNumberOftries()
+function result() {
+  saveNumberOftries();
 
-  if(cardsPicked[0].value === cardsPicked[1].value){
-    cardsPicked[0].el.parentElement.removeEventListener("click", flipACard)
-    cardsPicked[1].el.parentElement.removeEventListener("click", flipACard)
+  if (cardsPicked[0].value === cardsPicked[1].value) {
+    cardsPicked[0].el.parentElement.removeEventListener("click", flipACard);
+    cardsPicked[1].el.parentElement.removeEventListener("click", flipACard);
     cardsPicked = [];
     return;
   }
@@ -45,135 +167,97 @@ function result(){
     cardsPicked[1].el.classList.remove("active");
     cardsPicked = [];
     lockedCards = false;
-  }, 1000)
+  }, 1000);
 }
 
 const innerCards = [...document.querySelectorAll(".double-face")];
 const advice = document.querySelector(".advice");
-const score = document.querySelector(".score")
+const score = document.querySelector(".score");
 
 let numberOfTries = 0;
-function saveNumberOftries(){
+function saveNumberOftries() {
   numberOfTries++;
-  const checkForEnd = innerCards.filter(card => !card.classList.contains("active"))
-  if(!checkForEnd.length) {
-    advice.textContent = `Bravo ! Appuyez sur "espace" pour relancer une partie.`
-    score.textContent = `Votre score final : ${numberOfTries}`
+  const checkForEnd = innerCards.filter(card => !card.classList.contains("active"));
+  if (!checkForEnd.length) {
+    advice.textContent = `Bravo ! Appuyez sur "espace" pour relancer une partie.`;
+    score.textContent = `Votre score final : ${numberOfTries}`;
+
+    // Afficher la div d'inscription
+    const inscriptionContainer = document.getElementById("inscription-container");
+    inscriptionContainer.style.display = "block";
+
+    // Enregistrer le score dans le localStorage
+    const scores = getScoresFromLocalStorage();
+    scores.push({
+      username: "",
+      email: "",
+      numberOfTries: numberOfTries,
+      date: new Date().toLocaleDateString()
+    });
+    saveScoresToLocalStorage(scores);
+
     return;
   }
-  score.textContent = `Nombre de coups ${numberOfTries}`
+  score.textContent = `Nombre de coups ${numberOfTries}`;
 }
 
-window.addEventListener("keydown", handleRestart)
+const inscriptionForm = document.getElementById("inscription-form");
+inscriptionForm.addEventListener("submit", handleInscription);
 
-let shuffleLock = false;
-function handleRestart(e) {
-  e.preventDefault()
-  if(e.keyCode === 32) {
-    innerCards.forEach(card => card.classList.remove("active"))
-    advice.textContent = `Tentez de gagner avec le moins d'essais possible.`
-    score.textContent = `Nombre de coups : 0`
-    numberOfTries = 0;
-    cards.forEach(card => card.addEventListener("click", flipACard))
+function handleInscription(e) {
+  e.preventDefault();
 
-    if(shuffleLock) return;
-    shuffleLock = true;
-    setTimeout(() => {
-      shuffleCards()
-      shuffleLock = false;
-    }, 600)
-  }
+  // Récupérer les valeurs du formulaire
+  const username = document.getElementById("username").value;
+  const email = document.getElementById("email").value;
+
+  // Mettre à jour les informations du dernier score dans le localStorage
+  const scores = getScoresFromLocalStorage();
+  const lastScore = scores[scores.length - 1];
+  lastScore.username = username;
+  lastScore.email = email;
+  saveScoresToLocalStorage(scores);
+
+  // Mettre à jour le tableau des scores
+  displayScores();
+
+  // Réinitialiser le formulaire
+  inscriptionForm.reset();
+
+  // Masquer la div d'inscription
+  const inscriptionContainer = document.getElementById("inscription-container");
+  inscriptionContainer.style.display = "none";
 }
 
-window.addEventListener("DOMContentLoaded", function() {
-  // Ajoutez une variable pour stocker les données des joueurs
-  let tableauScores = [];
+function getScoresFromLocalStorage() {
+  const scoresString = localStorage.getItem("scores");
+  return scoresString ?
 
-  // Récupérez la référence vers le formulaire d'inscription
-  let inscriptionForm = document.getElementById("inscription-form");
 
-  // Ajoutez un écouteur d'événement pour la soumission du formulaire
-  inscriptionForm.addEventListener("submit", function(event) {
-    event.preventDefault(); // Empêche le formulaire de se soumettre
+  JSON.parse(scoresString) : [];
+}
 
-    // Récupérez les valeurs des champs nom et email
-    let nom = document.getElementById("nom").value;
-    let email = document.getElementById("email").value;
+function saveScoresToLocalStorage(scores) {
+  localStorage.setItem("scores", JSON.stringify(scores));
+}
 
-    // Récupérez le nombre de coups actuel
-    let nombreCoups = parseInt(document.querySelector(".score").textContent.match(/\d+/)[0]);
+function displayScores() {
+  const tableauScoresBody = document.getElementById("tableau-scores-body");
+  tableauScoresBody.innerHTML = "";
 
-    // Créez un objet pour stocker les données du joueur
-    let joueur = {
-      nom: nom,
-      email: email,
-      nombreCoups: nombreCoups,
-      date: new Date().toLocaleDateString()
-    };
+  const scores = getScoresFromLocalStorage();
 
-    // Ajoutez le joueur à votre tableau de scores
-    tableauScores.push(joueur);
-
-    // Appelez la fonction pour générer les lignes du tableau à chaque ajout de joueur
-    genererLignesTableau();
-
-    // Effectuez ici les actions supplémentaires, par exemple, enregistrez les données dans une base de données
-
-    // Affichez les données récupérées dans la console (vous pouvez les enregistrer ou les traiter autrement)
-    console.log("Nom:", nom);
-    console.log("Email:", email);
-    console.log("Nombre de coups:", nombreCoups);
-    console.log("Date:", joueur.date);
-
-    // Affichez une alerte de succès ou effectuez d'autres actions souhaitées
-    alert("Inscription réussie !");
-    document.getElementById("inscription-form").reset(); // Réinitialise le formulaire
+  scores.forEach(score => {
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
+      <td>${score.username}</td>
+      <td>${score.email}</td>
+      <td>${score.numberOfTries}</td>
+      <td>${score.date}</td>
+    `;
+    tableauScoresBody.appendChild(newRow);
   });
+}
 
-  // Récupérez la référence vers le corps du tableau
-  let tableauScoresBody = document.getElementById("tableau-scores-body");
-
-  // Fonction pour générer les lignes du tableau
-  function genererLignesTableau() {
-    // Vide le corps du tableau
-    tableauScoresBody.innerHTML = "";
-
-    // Parcourez le tableau des scores et créez une ligne pour chaque joueur
-    tableauScores.forEach(function(joueur) {
-      let ligne = document.createElement("tr");
-
-      // Colonne Nom
-      let colonneNom = document.createElement("td");
-      colonneNom.textContent = joueur.nom;
-      ligne.appendChild(colonneNom);
-
-      // Colonne Email
-      let colonneEmail = document.createElement("td");
-      colonneEmail.textContent = joueur.email;
-      ligne.appendChild(colonneEmail);
-
-      // Colonne Nombre de coups
-      let colonneNombreCoups = document.createElement("td");
-      colonneNombreCoups.textContent = joueur.nombreCoups;
-      ligne.appendChild(colonneNombreCoups);
-
-      // Colonne Date
-      let colonneDate = document.createElement("td");
-      colonneDate.textContent = joueur.date;
-      ligne.appendChild(colonneDate);
-
-      // Ajoutez la ligne au corps du tableau
-      tableauScoresBody.appendChild(ligne);
-    });
-  }
-
-  // Réinitialise le tableau des scores et le corps du tableau
-  function reinitialiserTableau() {
-    tableauScores = [];
-    genererLignesTableau();
-  }
-
-  // Ajoutez un écouteur d'événement au bouton de réinitialisation
-  let resetButton = document.getElementById("reset-button");
-  resetButton.addEventListener("click", reinitialiserTableau);
-});
+// Appelez la fonction displayScores pour afficher les scores lors du chargement de la page
+displayScores();
