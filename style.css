@@ -11,6 +11,8 @@ body {
   font-family: lato, Helvetica, sans-serif;
   background: linear-gradient(to right, #8d8d8c, #232323);
   padding: clamp(20px, 5vw, 50px) 20px 10px;
+  max-width: 80%;
+  margin: 0 auto;
 }
 
 h1, 
@@ -94,7 +96,6 @@ h1 span {
 }
 .active {
   transform: rotateY(180deg);
-  
 }
 
 /* formulaire */
@@ -117,7 +118,7 @@ input[type="email"] {
   padding: 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
-   pointer-events: auto;
+   /* pointer-events: auto; */
 }
 
 button {
@@ -140,17 +141,27 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
-
+.name{
+  padding-left: 30px;
+}
 thead th {
   background-color: #f2f2f2;
   padding: 8px;
   text-align: left;
   color: #000;
+  text-align: center;
 }
 
 tbody td {
   padding: 8px;
   border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+.tableau {
+  width: 80%;
+  margin: 80px auto;
+  padding-top: 50px;
+  background: #a29e9e;
 }
 #tableau-scores-body tr {
   border-bottom: 1px solid #ccc;

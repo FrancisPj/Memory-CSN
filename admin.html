@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory game modif1p</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <h1>Jeu des <span>cartes mémoires</span> pour <span> le CSN</span></h1>
+    <p class="advice">Les quinze meilleurs joueurs !</p>
+    <div class="score">Nombre de coups : 0</div>
+
+    
+
+    
+    <div class="tableau">
+          <h1>Tableau des scores</h1>
+      <table>
+        <thead>
+          <tr>
+            <th .class="name">Nom</th>
+            <th>Email</th>
+            <th class="score-column">Nombre de coups</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+      <tbody id="tableau-scores-body">
+          <!-- Les données seront ajoutées ici dynamiquement  -->
+        </tbody> 
+      </table>
+    </div>
+
+   <!-- <a href="admin.html" id="admin-link">Accéder au tableau des scores</a>-->
+
+    <form id="reset-form">
+      <label for="password">Mot de passe administrateur :</label>
+      <input type="password" id="password" required>
+      <button type="submit">Réinitialiser le tableau</button>
+    </form>
+    
+
+  <script src="app.js"></script>
+  <script src="admin.js"></script>
+  
+  </body>
+</html>
