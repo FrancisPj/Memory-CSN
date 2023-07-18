@@ -87,6 +87,46 @@ function saveNumberOftries() {
   }
   score.textContent = `Nombre de coups ${numberOfTries}`;
 }
+// formulaire d'inscription - validations
+
+const inputsValidity = {
+  username: true,
+  email: true,
+}
+
+const validationTexts = document.querySelectorAll(".error-msg");
+
+const usernameInput = document.getElementById("username");
+
+usernameInput.addEventListener("blur", uservalidation)
+usernameInput.addEventListener("input", uservalidation)
+
+function uservalidation() {
+  if(usernameInput.value.length >=3){
+    validationTexts[0].style.display = "none";
+    inputsValidity.username = true;
+  }else{
+    validationTexts[0].style.display = "block";
+    inputsValidity.username = false; // Mettre à jour l'état de validité
+  }
+}
+
+const emailInput = document.getElementById("email");
+
+emailInput.addEventListener("blur", mailvalidation)
+emailInput.addEventListener("input", mailvalidation)
+
+const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
+function mailvalidation() {
+  if(regexEmail.test(emailInput.value)){
+    validationTexts[1].style.display = "none";
+    inputsValidity.email = true;
+  }else{
+    validationTexts[1].style.display = "block";
+    inputsValidity.email = false; // Mettre à jour l'état de validité
+  }
+}
 
 function resetGame() {
   numberOfTries = 0;
@@ -114,6 +154,19 @@ inscriptionForm.addEventListener("submit", handleInscription);
 function handleInscription(e) {
   e.preventDefault();
 
+  //validation du formulaire
+  const keys = Object.keys(inputsValidity)
+  const failedInputs = keys.filter(key => !inputsValidity[key])
+
+  if(failedInputs.length){
+    failedInputs.forEach(input => {
+      const index = keys.indexOf(input)
+      showValidation({index: index, validation: false})
+    })
+  }else{
+    alert("données envoyées avec succés")
+  }
+
   // Récupérer les valeurs du formulaire
   const username = document.getElementById("username").value;
   const email = document.getElementById("email").value;
@@ -131,19 +184,16 @@ function handleInscription(e) {
   saveScoresToLocalStorage(scores);
 
   // Réinitialiser l'état des cartes
-innerCards.forEach(card => {
+  innerCards.forEach(card => {
   card.classList.remove("active");
-});    
-
- // Mettre à jour le tableau des scores
-  displayScores();
-
-// Réinitialiser le formulaire
-  inscriptionForm.reset();
-  
   // Masquer la div d'inscription
   const inscriptionContainer = document.getElementById("inscription-container");
   inscriptionContainer.style.display = "none";
+  // Réinitialiser le formulaire
+  inscriptionForm.reset();
+});
+  // Mettre à jour le tableau des scores
+  displayScores();
 }
 
 function getScoresFromLocalStorage() {
@@ -151,12 +201,20 @@ function getScoresFromLocalStorage() {
   return scoresString ? JSON.parse(scoresString) : [];
 }
 
+function saveScoresToLocalStorage(scores) {
+  localStorage.setItem("scores", JSON.stringify(scores));
+}
+
+// // Appelez la fonction displayScores pour afficher les scores lors du chargement de la page
+// displayScores();
+
 function resetScores() {
   // Réinitialiser les scores selon vos besoins
 }
 
 const resetForm = document.getElementById("reset-form");
 resetForm.addEventListener("submit", handleReset);
+
 
 function handleReset(e) {
   e.preventDefault();

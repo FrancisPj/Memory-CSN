@@ -13,38 +13,35 @@
 
     <h1>Jeu des <span>cartes mémoires</span> pour <span> le CSN</span></h1>
     <p class="advice">Les quinze meilleurs joueurs !</p>
-    <div class="score">Nombre de coups : 0</div>
+    <div class="container-admin">
+      <div class="tableau">
+            <h1>Tableau des scores</h1>
+        <table>
+          <thead>
+            <tr>
+              <th .class="name">Nom</th>
+              <th>Email</th>
+              <th class="score-column">Nombre de coups</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+        <tbody id="tableau-scores-body">
+            <!-- Les données seront ajoutées ici dynamiquement  -->
+          </tbody> 
+        </table>
+      </div>
 
-    
-
-    
-    <div class="tableau">
-          <h1>Tableau des scores</h1>
-      <table>
-        <thead>
-          <tr>
-            <th .class="name">Nom</th>
-            <th>Email</th>
-            <th class="score-column">Nombre de coups</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-      <tbody id="tableau-scores-body">
-          <!-- Les données seront ajoutées ici dynamiquement  -->
-        </tbody> 
-      </table>
+      <div class="modifAdmin">
+        <a href="index.html">Retour au jeu</a>
+        <form class="container" id="reset-form">
+          <label for="password">Mot de passe administrateur :</label>
+          <input type="password" id="password" required>
+          <button type="submit">Réinitialiser le tableau</button>
+        </form>
+      </div>
     </div>
 
-   <!-- <a href="admin.html" id="admin-link">Accéder au tableau des scores</a>-->
-
-    <form id="reset-form">
-      <label for="password">Mot de passe administrateur :</label>
-      <input type="password" id="password" required>
-      <button type="submit">Réinitialiser le tableau</button>
-    </form>
-    
-
-  <script src="app.js"></script>
+  <!-- <script src="app.js"></script> -->
   <script src="admin.js"></script>
   
   </body>
