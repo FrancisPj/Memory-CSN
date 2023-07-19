@@ -38,13 +38,34 @@ h1 span {
   font-size: clamp(16px, 2.5vw, 20px);
   margin-top: 15px;
 }
-
+.grid-sponsor-title {
+  font-size:16px;
+  margin-top: 30px;
+}
+.grid-sponsor{
+  display: grid;
+  grid-template-columns: 10% 85%; 
+  gap: 20px; 
+}
+.sponsors{
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+  }
+.sponsors img {
+  object-fit: cover;
+  width: 100%;
+  
+}
+.sponsors h1 {
+  font-size:10px;
+}
 .grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  max-width: 800px;
+  grid-template-columns: repeat( 6, 1fr);
   gap: 10px;
-  margin: 30px auto 0;
+  margin-top: 30px;
+  width: 100%;
 }
 .card {
   aspect-ratio: 1/1;
@@ -243,5 +264,22 @@ tbody td {
   }
   #inscription-container{
     width: auto;
+  }
+  .grid{
+    gap:5px;
+    order: -1;
+  }
+  .grid-sponsor-title {
+    font-size:12px;
+  }
+  .grid-sponsor {
+    grid-template-columns: 1fr; 
+  }
+  .sponsors {
+    display: grid;
+  grid-template-columns: repeat( 6, 1fr);
+  gap: 12px;
+  align-items: center;
+
   }
 }
