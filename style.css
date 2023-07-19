@@ -141,7 +141,9 @@ input[type="email"] {
   border: 1px solid #ccc;
    /* pointer-events: auto; */
 }
-
+input {
+width: 100%;
+}
 button {
   display: block;
   margin-top: 10px;
@@ -202,7 +204,7 @@ tbody td {
   display: grid;
 }
 .modifAdmin a{
-  width: 10%;
+  width: auto;
   margin: 40px auto;
   background: white;
   color: #000;
@@ -217,4 +219,26 @@ tbody td {
 }
 .container {
   display: grid;
+}
+@media (max-width:750px) {
+  body {
+    max-width: 100%;
+  }
+  h1, h2, p, label, span {
+    font-size: 15px;
+    text-align: center ;
+  }
+  span {
+    font-size: 16px;
+  }
+  .tableau {
+    width: 100%;
+  }
+  .tableau th, td {
+    font-size:16px;
+    padding: 0;
+  }
+  #inscription-container{
+    width: auto;
+  }
 }

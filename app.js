@@ -27,7 +27,7 @@ function flipACard(e) {
 
   if (cardsPicked.length === 2) result();
 }
-
+//pour ne pas avoir de répétition au double clic sur la même carte
 function saveCard(el, value) {
   if (el === cardsPicked[0]?.el) return;
 
@@ -90,8 +90,8 @@ function saveNumberOftries() {
 // formulaire d'inscription - validations
 
 const inputsValidity = {
-  username: true,
-  email: true,
+  username: false,
+  email: false,
 }
 
 const validationTexts = document.querySelectorAll(".error-msg");
