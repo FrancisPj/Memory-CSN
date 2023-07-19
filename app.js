@@ -2,7 +2,7 @@ const cards = document.querySelectorAll(".card");
 
 function shuffleCards() {
   cards.forEach(card => {
-    const randomPos = Math.trunc(Math.random() * 12);
+    const randomPos = Math.trunc(Math.random() * 30);
     card.style.order = randomPos;
   });
 }
