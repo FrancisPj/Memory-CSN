@@ -63,9 +63,9 @@ function saveNumberOftries() {
   numberOfTries++;
   const checkForEnd = innerCards.filter(card => !card.classList.contains("active"));
   if (!checkForEnd.length) {
+    
     advice.textContent = "Bravo ! vous avez gagné 😁";
     score.textContent = `Votre score final : ${numberOfTries}`;
-  
 
     // Afficher la div d'inscription
     const inscriptionContainer = document.getElementById("inscription-container");
@@ -132,7 +132,20 @@ function resetGame() {
   numberOfTries = 0;
   lockedCards = false;
   cardsPicked = [];
+  if (numberOfTries <= 15) {
+    advice.textContent = "Bravo ! vous avez gagné 😁 Votre score est excellent !";
+  }
+  if (numberOfTries <= 30) {
+    advice.textContent = "Bravo ! vous avez gagné 😁 Votre score est très bon !";
+  }
+  if (numberOfTries <= 40) {
+    advice.textContent = "Bravo ! vous avez gagné 😁 Votre score est dans la moyenne !";
+  }
+  if (numberOfTries <= 50) {
+    advice.textContent = "Bravo ! vous avez gagné 😁 Vous pouvez encore faire mieux !";
+  } else {
   advice.textContent = "Bravo ! vous avez gagné 😁";
+  }
   score.textContent = score.textContent;
   shuffleCards();
 
@@ -144,7 +157,7 @@ function resetGame() {
   setTimeout(() => {
     score.textContent = "Nombre de coups : 0";
     advice.textContent = "Tentez de gagner avec le moins d'essais possible.";
-  }, 3500);
+  }, 5500);
 }
 
 
