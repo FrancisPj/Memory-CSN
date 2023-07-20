@@ -39,7 +39,7 @@ h1 span {
   margin-top: 15px;
 }
 .grid-sponsor-title {
-  font-size:16px;
+  font-size:10px;
   margin-top: 30px;
 }
 .grid-sponsor{
@@ -261,7 +261,7 @@ tbody td {
     width: 100%;
   }
   .tableau th, td {
-    font-size:16px;
+    font-size:10px;
     padding: 0;
   }
   #inscription-container{
