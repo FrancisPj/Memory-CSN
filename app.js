@@ -112,7 +112,9 @@ usernameInput.addEventListener("blur", uservalidation)
 usernameInput.addEventListener("input", uservalidation)
 
 function uservalidation() {
-  if(usernameInput.value.length >=3){
+  if (usernameInput.value.trim().length >= 3 && !(/^\s*$/.test(usernameInput.value))) {
+    // La longueur du nom d'utilisateur est au moins 3 caractères
+    // Et le nom d'utilisateur ne contient pas uniquement des espaces
     validationTexts[0].style.display = "none";
     inputsValidity.username = true;
   }else{
