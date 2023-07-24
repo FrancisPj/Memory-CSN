@@ -17,7 +17,8 @@ body {
 
 h1, 
 .score,
-.advice {
+.advice,
+.phase-message {
   text-align: center;
   color: #f1f1f1;
 }
@@ -30,7 +31,8 @@ h1 {
 h1 span {
   font-weight: 800;
 }
-.advice {
+.advice,
+.phase-message {
   font-size: clamp(16px, 2.5vw, 25px);
   margin-top: 10px;
 }
